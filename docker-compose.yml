@@ -2,6 +2,9 @@ version: '2.7'
 
 services:
   app:
+    build:
+      context: .
+      dockerfile: Dockerfile
     image: docker/springsql:1.0.0
     ports:
       - 8080:8080
