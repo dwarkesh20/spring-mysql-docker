@@ -1,24 +1,21 @@
 version: '2.7'
 
 services:
- app:
-  image: docker/springsql:1.0.0
-  ports:
-  - 8080:8080
-  environment:
-   SPRING_DATASOURCE_URL: jdbc:mysql://db:/3306/movie?autoReconnect=true&allowPublicKeyRetrieval=true&useSSL=false
-   SPRING_DATASOURCE_USERNAME: root
-   SPRING_DATASOURCE_PASSWORD: root
-   depends_on:
-    - db
+  app:
+    image: docker/springsql:1.0.0
+    ports:
+      - 8080:8080
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/movie?autoReconnect=true&allowPublicKeyRetrieval=true&useSSL=false
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    depends_on:
+      - db
 
- db:
-  image: mysql:8.0.32
-  environment:
-   DATABASE_HOST: docker-mysql
-   DATABASE_PORT: 3306
-   MYSQL_ROOT_PASSWORD: root
-   MYSQL_DATABASE: movie
-   MYSQL_USER: root
-   MYSQL_PASSWORD: root
-  
+  db:
+    image: mysql:8.0.32
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: movie
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
